@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<title>Form Page</title>
+
+<head>
+
+    <h5>Form Page</h5>
+
+</head>
+
+<style>
+    .srchClass {
+
+        margin-left: 400px;
+
+    }
+
+    .highlight {
+
+
+        color: red;
+        background-color: yellow;
+
+    }
+</style>
+
+<meta name="viewport" content="width = device-width,initial-scale = 1.0">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+<form action="/create" method="POST" target="_blank" id="frmId" name="frmName" class="frmClass">
+
+    <div class="overAllClass">
+
+        <label for="Name">Name</label>
+        <input type="text" id="txtId" name="txtName" class="txtClass"></input>
+        <br><br>
+        <label for="dt">Date</label>
+        <input type="date" id="dtId" name="dtName" class="dtClass"></input>
+        <br><br>
+        <div class="radioclass">
+            <label for="gender">Gender : </label>
+            <input type="radio" id="maleId" name="MalName" class="MalClass" value="Male"></input>
+            <span>Male</span>
+            <input type="radio" id="femaleId" name="FemName" class="femClass" value="Female"></input>
+            <span>Female</span>
+        </div>
+        <br><br>
+        <span>prefered location</span>
+        <select id="selectId"></select>
+        <br><br><br>
+        <input type="checkbox" id="checkId" name="checkName" class="checkClass"></input>
+        <label for="Ack">Please Acknowledge</label>
+        <br><br>
+        <input type="submit" id="subId" name="subName" class="subClass" value="Save"></input>
+
+        <br><br>
+
+    </div>
+
+</form>
+
+
+
+<!-- Search -->
+
+
+<span class="srchClass">
+    <label for="search">Search :</label>
+    <input type="text" id="searchId" name="searchName" class="searchClass"></input>
+    <input type="button" id="SbtnId" name="btnName" class="btnClass" value="search"></input>
+</span>
+
+
+<!-- search -->
+
+
+<!--  Table -->
+
+<div class="OveralltblClass">
+
+    <table id="tblId">
+
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Gender</th>
+            <th>Location</th>
+            <th>Acknowledgement</th>
+        </tr>
+
+
+    </table>
+
+</div>
+
+<!--  Table -->
+
+<script>
+
+
+
+    // normal
+
+    document.getElementById("frmId").addEventListener('submit', function (event) {
+
+
+        event.preventDefault();
+
+
+        var clName = document.getElementById("txtId").value;
+        var clDate = document.getElementById("dtId").value;
+        var ClGen = $("input[type = radio]:checked").val();
+        var ClLoc = $("#selectId").val();
+        var ClAck = document.getElementById("checkId").checked ? "Yes" : "No";
+
+
+        var table = document.getElementById("tblId");
+
+        var row = table.insertRow(-1);
+
+        row.insertCell(0).innerHTML = clName;
+        row.insertCell(1).innerHTML = clDate;
+        row.insertCell(2).innerHTML = ClGen;
+        row.insertCell(3).innerHTML = ClLoc;
+        row.insertCell(4).innerHTML = ClAck;
+
+
+
+    });
+
+    //
+
+
+    // Jquery
+
+
+    $(document).ready(function () {
+
+
+
+
+        // Checkbox validation
+        var maleCheck = document.getElementById("maleId");
+        var femaleCheck = document.getElementById("femaleId");
+
+
+        $("input[type = radio][id = femaleId]").on('click', function () {
+
+
+
+            femaleCheck.checked = true;
+            maleCheck.checked = false;
+
+
+        });
+
+        $("input[type = radio][id = maleId]").on('click', function () {
+
+
+
+            femaleCheck.checked = false;
+            maleCheck.checked = true;
+
+
+        });
+
+
+
+        // checkbox validation
+
+
+        // select validation
+
+
+
+        var entry = true;
+        $("select").on('click', function () {
+
+            var arr = ["chennai", "coimbatore", "kerala", "tanjore", "mysore"];
+
+            if (entry == true) {
+
+                $.each(arr, function (a, b) {
+
+                    $("#selectId").append('<option>' + b + '</option>');
+
+                });
+            }
+
+            entry = false;
+
+        });
+
+
+        // select validation
+
+
+        // Sorting
+
+
+        $("table tbody tr th").on('click', function () {
+
+
+            var table = document.getElementById("tblId");
+            var rows = table.rows;
+            var len = rows.length;
+            var x, y;
+            var sorting, shouldsort;
+            var Index = $(this).index();
+
+
+            sorting = true;
+
+            while (sorting) {
+
+
+                for (var i = 1; i < rows.length; i++) {
+
+                    shouldsort = false;
+                    x = rows[i].getElementsByTagName("TD")[Index];
+                    y = rows[i + 1].getElementsByTagName("TD")[Index];
+
+
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+
+
+                        shouldsort = true;
+                        break;
+
+                    }
+
+                }
+
+
+                if (shouldsort) {
+
+
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    sorting = true;
+
+                }
+
+
+            }
+
+
+
+        });
+
+
+
+        // Sorting
+
+
+        // search
+
+
+        $("input[type = text][id = searchId]").on('change', function () {
+
+
+            var srch = $("#searchId").val();
+
+            $("table tbody tr").find("#highlightId").removeClass("highlight");
+
+
+        });
+
+
+        $("#SbtnId").on('click', function () {
+
+            var searchVal = $("#searchId").val();
+
+
+            if(searchVal != ''){
+
+            var regex = new RegExp(searchVal, 'ig');
+
+
+            var format = '<span id = "highlightId" class = "highlight">' + searchVal + '<span>';
+
+
+
+            $("table tbody tr").each(function () {
+
+
+                $(this).html($(this).html().replaceAll(regex, format));
+
+
+            });
+
+        }
+
+
+        });
+
+
+        // search
+
+
+
+
+    })
+
+
+
+    // Jquery
+
+
+</script>
+
+</body>
+
+
+</html>
