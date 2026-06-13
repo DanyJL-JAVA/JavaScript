@@ -1,0 +1,53 @@
+
+var arr = [2,7,4,1,85,31];
+
+
+// Shift() --> By default 1st Index of an array will be removed.
+
+// arr.shift(); // 7 is removed
+
+// Shift()
+
+//pop() --> By default last Index of an array will be removed.
+
+// arr.pop(); // 31 is removed
+
+//pop()
+
+
+// .filter() --> Gives an restaged new set of array.
+// const array = arr.filter(n => n != 4); // 4 for is removed.
+// console.log(array);
+//.filter()
+
+
+
+// Splice --> removes from targer Index
+
+// arr.splice(1,1); // 1st index 7 will be removed.
+
+// arr.splice(3,5) // This works in the format of {from & to} (i.e) "from" 3rd "to" 5th Index is removed
+
+// Splice --> removes from targer Index
+
+
+
+// Find Index and Splice Concept 
+
+const Ind = arr.indexOf(85);
+
+if(Ind > -1){ // Checking the Index -> because the Index will start from "0" respectively.And Incase the defained value (i.e : 85) is present in the array. It will automatically give us negative values : like -1,-2,-3 etc...
+
+arr.splice(Ind, 1);
+
+}
+
+// Find Index and Splice Concept 
+
+
+console.log(arr);
+
+
+
+
+
