@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+
+
+<h5>Home</h5>
+
+<body>
+
+    <div class="btn">
+
+        <input type="button" id="btnId" value="Increment Button" name="btnName" class="btnClass">
+        <p> Button Pressed<span class="Increment_Pressed">0</span>Times</p>
+        <p> Triggered <span class="Increment_Count">0</span>Times</p>
+        </p>
+
+
+    </div>
+
+</body>
+
+
+<script>
+
+
+    var btn = document.getElementById("btnId");
+    var btnPress = document.querySelector(".Increment_Pressed");
+    var count = document.querySelector(".Increment_Count");
+
+
+    var pressedCount = 0;
+    var triggerCount = 0;
+
+
+
+    const myDebounce = (cb,d) => {
+        let timer;
+
+        return function (...args) {
+
+
+            if (timer) clearTimeout(timer);
+
+            timer = setTimeout(() => {
+
+                cb(...args);
+
+            }, d);
+
+        };
+
+    };
+
+    const debouncedCount = myDebounce(() => { // call back function
+
+        triggerCount += 1;
+        count.innerHTML = triggerCount;
+
+    }, 800);
+
+
+    document.getElementById("btnId").addEventListener("click", function () {
+
+
+        btnPress.innerHTML = ++pressedCount;
+
+
+        debouncedCount();
+
+    });
+
+
+
+
+</script>
+
+
+</html>
+
+
+
+</html>
