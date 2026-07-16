@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html>
+
+<title>FETCH API</title>
+
+<head>
+    <h5>Handling Different Request Methods (POST, PUT, DELETE)</h5>
+    <br><br><br><br>
+    <h7>* Note: Please Connect to Internet to Make the API to Work</h7>
+
+    <br><br><br><br>
+</head>
+
+<body>
+
+
+    <input type="button" id="GetId" value="GET"></input>
+    <input type="button" id="PostId" value="POST"></input>
+    <input type="button" id="PutId" value="PUT"></input>
+    <input type="button" id="DeleteId" value="DELETE"></input>
+    <input type="button" id="handleErrId" value="Handle Error"></input>
+
+
+
+</body>
+
+<script>
+
+    // 1. GET
+    document.getElementById("GetId").addEventListener('click', function () {
+
+
+        fetch('https://fakestoreapi.com/products/1')
+            .then(response => response.json())
+            .then(items => console.log(items));
+
+    });
+
+
+    // fetch() sends the GET request to the specified URL.
+    // The response.json() method parses the JSON response.
+    // .then() logs the list of items once they are fetched.
+
+    // GET
+
+    // 2. POST
+
+    document.getElementById("PostId").addEventListener('click', function () {
+
+
+
+        const data = { name: 'Pranjal', age: 25 };
+
+        fetch('https://fakestoreapi.com/products', {
+            method: 'POST',
+            headers: {
+
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(result => console.log(result));
+
+    });
+
+
+    // The method: 'POST' tells Fetch to send data to the server.
+    // The headers include the Content-Type to indicate we are sending JSON.
+    // The body contains the data to be sent, which is stringified using JSON.stringify().
+
+    // POST
+
+
+    //  3. PUT Request to Update Data
+
+
+    document.getElementById("PutId").addEventListener('click', function () {
+
+        const updatedData = { id: 1, price: 300 };
+
+        fetch('https://fakestoreapi.com/products/1', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedData)
+        })
+            .then(response => response.json())
+            .then(result => console.log(result));
+
+
+    });
+
+    // The method: 'PUT' indicates we are updating data.
+    // The body sends the updated data, converted to JSON.
+    // The response is parsed as JSON, and the updated result is logged.
+
+
+    //  PUT Request to Update Data
+
+
+    // 4. DELETE Request to Remove Data
+
+
+    document.getElementById("DeleteId").addEventListener('click', function () {
+
+
+
+        fetch('https://fakestoreapi.com/products/1', {
+            method: 'DELETE'
+        })
+            .then(response => response.json())
+            .then(result => console.log('Deleted:', result));
+
+
+    });
+
+
+
+    // method: 'DELETE' indicates that we want to delete the specified resource.
+    // The response is parsed as JSON to confirm the deletion.
+    // The result is logged to indicate the operation was successful.
+
+    // DELETE Request to Remove Data
+
+    // 5.Handling Errors in Fetch API
+
+
+    document.getElementById("handleErrId").addEventListener('click', function () {
+
+
+
+        fetch('https://api.example.com/data')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => console.log('Data:', data))
+            .catch(error => console.error('Fetch error:', error.message));
+
+    });
+
+    // Fetching Data: The fetch('https://api.example.com/data') call requests data from the API.
+    // Checking for Errors: The .then(response => { ... }) block checks if response.ok is true. If not, it throws an error with the status code.
+    // Parsing JSON: If successful, response.json() converts the response into JSON format.
+    // Logging Data: The .then(data => console.log('Data:', data)) logs the received data.
+    // Handling Errors: The .catch(error => console.error('Fetch error:', error.message)) captures and logs errors.
+
+    // Handling Errors in Fetch API
+
+
+</script>
+
+
+</html>
