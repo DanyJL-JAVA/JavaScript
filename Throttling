@@ -1,71 +1,19 @@
-<!Doctype html>
+<!--console-->
 
-
-<html>
-
-
-<title>Throttling Check</title>
-
-<head>
-
-    <h5>Throttling</h5>
-
-</head>
-
-<body>
-
-<input type="button" id="clickId" name="clickName" class="clickClass" value="Click"></input>
-
-<div> Click Count = <span id="clckId">0</span></div>
-<div> Trigger Count = <span id="TriggerId">0</span></div>
-
-</body>
-
-<script>
-
-    var ClickCount = 0;
-    var TriggerCount = 0;
-
-const getthrottle = (cb,d) => {
-
-let last = 0;
-
-return function(){
-
-let now = new Date().getTime();
-console.log(now - last); // you Can Check here the Difference.
-if(now - last < d ) return;
-last = now;
-return cb();
-
-}
-
-};
-
-
-//2
-const throttle = getthrottle(() => {
-
-debugger;
-TriggerCount++;
-document.getElementById('TriggerId').innerHTML = TriggerCount;
-
-
-},1000);
-
-
-//1
-    document.getElementById('clickId').addEventListener('click',function(){
-
-    ClickCount++;
-    document.getElementById('clckId').innerHTML = ClickCount;
-
-throttle();
-
-    });
-
-
-</script>
-
-
-</html>
+<!--1792660861886 Initial Count get Increased-->
+<!--168-->
+<!--328-->
+<!--504-->
+<!--656-->
+<!--808-->
+<!--1096 Count get Increased when it reach above the target delay of 1000 millie seconds-->
+<!--192-->
+<!--328-->
+<!--720-->
+<!--896-->
+<!--1056 Count get Increased when it reach above the target delay of 1000 millie seconds-->
+<!--168-->
+<!--336-->
+<!--496-->
+    
+    <!--console-->
