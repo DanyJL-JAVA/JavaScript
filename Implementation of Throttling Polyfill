@@ -30,12 +30,13 @@ const getthrottle = (cb,d) => {
 
 let last = 0;
 
-return function(...args){
+return function(){
 
 let now = new Date().getTime();
+console.log(now - last); // you Can Check here the Difference.
 if(now - last < d ) return;
 last = now;
-return cb(...args);
+return cb();
 
 }
 
