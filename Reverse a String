@@ -4,5 +4,18 @@
 
 const reverseString = str => [...str].reverse().join('');
 
-console.log(reverseString('hello'));
-console.log(reverseString('Java script'));
+console.log(reverseString('hello')); // OUTPUT : olleh
+console.log(reverseString('Java script')); // OUTPUT : tpircs avaJ
+
+
+const reverseString creates a function named reverseString.
+[...'hello'] --> This is called the spread syntax (or) Spread Operator.It takes the characters of a string and spreads them into an array.Think of it like taking a word apart and putting each character into its own box.
+
+The .join('') method joins all array elements into a single string.
+.join('') — joins characters without anything between them.
+.join('-') — joins characters with a hyphen between them.
+
+['o', 'l', 'l', 'e', 'h'].join('')
+// "olleh"
+// ['o', 'l', 'l', 'e', 'h'].join('-')
+// "o-l-l-e-h"
