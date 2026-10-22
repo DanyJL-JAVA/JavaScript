@@ -1,0 +1,8 @@
+
+
+/// Reverse a String
+
+const reverseString = str => [...str].reverse().join('');
+
+console.log(reverseString('hello'));
+console.log(reverseString('Java script'));
