@@ -36,6 +36,7 @@
 // cb is the callback function to execute.
 // d is the delay in milliseconds.
 // Timer stores the ID of the pending timer.
+// Every time the returned function is called, clearTimeout(Timer) cancels the previous timer.
 
     var btn = document.getElementById("btnId");
     var btnPress = document.querySelector(".Increment_Pressed");
