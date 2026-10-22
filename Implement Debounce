@@ -32,6 +32,11 @@
 <script>
 
 
+//Note : 
+// cb is the callback function to execute.
+// d is the delay in milliseconds.
+// Timer stores the ID of the pending timer.
+
     var btn = document.getElementById("btnId");
     var btnPress = document.querySelector(".Increment_Pressed");
     var count = document.querySelector(".Increment_Count");
