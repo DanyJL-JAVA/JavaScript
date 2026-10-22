@@ -1,3 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+
+
+<title>Throttling</title>
+
+
+<head>
+
+    <h5>Throttling</h5>
+
+</head>
+
+<body>
+
+<div classs="overAllClass">
+
+
+    <input type="button" id="btnId" name="btnName" class="btnClass" value="click"></input>
+    <br><br>
+    <div>Click : <span id="clickId"> 0</span></div>
+    <div>Trigger : <span id="TriggerId"> 0</span></div>
+
+
+</div>
+
+</body>
+
+<script>
+
+    var ClickCount = 0;
+    var TriggerCount = 0;
+
+
+//3
+
+const  getThrottled = (cb,d) => {
+
+let last = 0;
+return function(...args){
+
+const now = new Date().getTime();
+
+console.log(now - last);
+
+if(now - last < d) return;
+last = now;
+return cb(...args);
+
+}
+
+
+}
+
+//2
+
+    const Throttle = getThrottled(() => {
+
+    TriggerCount++;
+    document.getElementById('TriggerId').innerHTML = TriggerCount;
+
+    },1000);
+
+
+//1
+
+document.getElementById('btnId').addEventListener('click',function(){
+
+ClickCount++;
+document.getElementById('clickId').innerHTML = ClickCount;
+
+Throttle();
+
+});
+
 <!--console-->
 
 <!--1792660861886 Initial Count get Increased-->
@@ -15,5 +91,9 @@
 <!--168-->
 <!--336-->
 <!--496-->
-    
+
     <!--console-->
+
+</script>
+
+</html>
