@@ -14,3 +14,24 @@ const array = arr1.flat(Infinity);
 
 console.log(array); // OUTPUT : [ 1, 2, 3, 4, 5, 6 ]
 
+
+<!-- 2.Remove Duplicates -->
+
+
+// Remove Duplicates
+
+// const removeDuplicates = () => {} (or) function removeDuplicates (){} both are same
+
+const removeDuplicates = (arr) => {
+
+
+  return [...new Set(arr)]; // HashSet for Java and Set for Js. (Set functionality to remove Duplicate entries.)
+  
+}
+
+
+console.log(removeDuplicates([1,2,2,3,4,4,5])); //[1,2,3,4,5]
+
+
+
+
