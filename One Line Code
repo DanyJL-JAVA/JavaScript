@@ -1,0 +1,16 @@
+
+<!-- 1. Flattening Nested Array -->
+
+
+const arr = [1,[2,[3,4],5],6];
+
+console.log(arr.flat(Infinity)); // OUTPUT : [ 1, 2, 3, 4, 5, 6 ]
+
+// or
+
+const arr1 = [1,[2,[3,4],5],6];
+
+const array = arr1.flat(Infinity);
+
+console.log(array); // OUTPUT : [ 1, 2, 3, 4, 5, 6 ]
+
