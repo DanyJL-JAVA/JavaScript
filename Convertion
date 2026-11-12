@@ -1,0 +1,13 @@
+
+/// Integer to Array
+
+let numbers = 34534525;
+
+let arr = numbers.toString().split('').map(Number)
+
+console.log(arr);
+
+
+// .toString() -> Convert Integer to String
+// .split('') -> Converts to Array
+// .map(Number) ->  Convert back to Integer.
