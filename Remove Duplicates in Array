@@ -1,0 +1,51 @@
+let arr = [10, 20, 30, 10, 20, 40, 50];
+
+let array = [...new Set(arr)];
+
+console.log(array); // result : [ 10, 20, 30, 40, 50 ]
+
+// // Bescause we use "SET", Time Compleity : O(n).
+
+// Note : 
+// new Set(arr) stores only unique values.
+// [... ] (Spread operator) converts the Set back into an array.
+
+
+///////////////////// other way //////////////////
+
+// let result = arr.filter((value, index) => {
+
+//   console.log(index + ' <'+value+'> '+ arr.indexOf(value));
+//     return arr.indexOf(value) === index;
+// });
+
+// console.log(result);
+
+// Time Compleity : quadratic Time Complexity 
+
+///////////////////// other way //////////////////
+
+
+// let result1 = [];
+
+// for(var i = 0 ; i < arr.length; i++){
+
+//   if(!result1.includes(arr[i])){
+
+//     result1.push(arr[i]);
+    
+//   }
+  
+// }
+//   console.log(result1); // output : [ 10, 20, 30, 40, 50 ]
+
+// Time Compleity : quadratic Time Complexity
+  
+
+	
+
+
+
+
+
+
