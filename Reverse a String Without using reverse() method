@@ -1,0 +1,28 @@
+var s = 'ram krishna';
+
+const getArray = (s) => [...s].reduce((a,b) => b + a,"");
+
+console.log(getArray(s)); // Const is friendly to Call the function.
+
+// 1.const reverseString: Creates a constant variable named reverseString to hold the function.
+// 2. ... (Spread Syntax): Unpacks the string into individual characters.
+// 3. []: Wraps those unpacked characters into a new array.
+// 4. Initial Value (""): At the very end of the line, "" sets the starting value of our accumulator (acc) to an empty string.
+// 5. In Java We give Initial Value Front .reduce(0,(a,b) -> a + b). But Here we need to give in last.  
+
+// Same for Integers.
+
+var num = 12345;
+
+const getReversedStr = () => [...String(num)].reduce((a,b) => b + a,"");
+const getReversedInt = () => [...String(num)].map(Number).reduce((a,b) => b + a,"");
+
+//1. Just Add ...String() to Convert into a String array and reverse the Integer value.
+//2. If you Need again back to Integer Wrap it with .map(Number)
+
+
+console.log(getReversedStr(num));
+console.log(getReversedInt(num));
+
+
+
