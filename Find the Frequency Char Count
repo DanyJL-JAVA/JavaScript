@@ -1,0 +1,30 @@
+
+
+const getFrequencyCount = (s) => {
+
+const hashmap = new Map();
+
+for(let i = 0; i < s.length; i++){
+
+var a = s.charAt(i);
+
+if(!hashmap.has(a)){
+
+hashmap.set(a,0);
+
+}
+
+hashmap.set(a,hashmap.get(a) + 1);
+
+}
+
+return hashmap;
+
+}
+
+
+const s = "javascript";
+
+console.log(getFrequencyCount(s));
+
+
