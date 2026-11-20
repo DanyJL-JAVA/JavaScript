@@ -1,3 +1,4 @@
+
 const users = [
     { id: 1, name: "John" },
     { id: 2, name: "Jane" },
@@ -7,9 +8,10 @@ const users = [
 ];
 
 
-const array = [...new Map(users.map((user) => [user.id,user])).values()];
+const arr = [...new Map(users.map((user) => [user.id,user])).values()];
 
-console.log(array);
+console.log('Using Map => ');
+console.log(arr);
 
 // new Map() => To Convert the Array to Map in 'key' & 'value' pairs.
 // [...] => Finally, the spread Operator Converts the Map to array.
@@ -21,5 +23,51 @@ console.log(array);
 // 2.Keeps the last object when duplicate IDs exist.
 // 3.Time complexity: O(n).
  
+ /////////////////////Other Way using =>  Set + Filter /////////////////////////////////
+
+
+const hashset = new Set();
+
+const array = [...users.filter((user) => {
+
+
+if(hashset.has(user.id)){
+
+return false;
+
+}
+
+hashset.add(user.id);
+
+return true;
+
+
+})];
+
+console.log('Using Set => ');
+console.log(array);
+
+// Time Complexity : O(n) First occurrence
+
+
+/////////////////////Other Way using =>  Set + Filter /////////////////////////////////
+
+
+/// OUTPUT :
+
+// Using Map => 
+// [
+//   { id: 1, name: 'John' },
+//   { id: 2, name: 'Jane' },
+//   { id: 3, name: 'Mike' }
+// ]
+// Using Set => 
+// [
+//   { id: 1, name: 'John' },
+//   { id: 2, name: 'Jane' },
+//   { id: 3, name: 'Mike' }
+// ]
+
+
 
 
