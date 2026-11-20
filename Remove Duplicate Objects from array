@@ -1,0 +1,25 @@
+const users = [
+    { id: 1, name: "John" },
+    { id: 2, name: "Jane" },
+    { id: 1, name: "John" },
+    { id: 3, name: "Mike" },
+    { id: 2, name: "Jane" }
+];
+
+
+const array = [...new Map(users.map((user) => [user.id,user])).values()];
+
+console.log(array);
+
+// new Map() => To Convert the Array to Map in 'key' & 'value' pairs.
+// [...] => Finally, the spread Operator Converts the Map to array.
+// .map() => set the id -> Key | and id + name (user) -> value
+// .values() => extracting the value pair separtely from map and return to result.
+
+//*Note : A Map stores unique keys.When a duplicate key appears, the latest value replaces the old one.
+// 1.Removes duplicates based on id.
+// 2.Keeps the last object when duplicate IDs exist.
+// 3.Time complexity: O(n).
+ 
+
+
