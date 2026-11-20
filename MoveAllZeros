@@ -1,0 +1,15 @@
+const arr = [3,21,5,0,6,4,0,0,223,12,83];
+
+
+const array = [...arr.filter((a) => a !== 0), ...arr.filter((b) => b === 0)];
+
+
+console.log(array);
+
+//Output
+
+// [
+//     3, 21,  5, 6, 4,
+//   223, 12, 83, 0, 0,
+//     0
+// ]
